@@ -1,64 +1,40 @@
-// import router from './router'
-// import store from './store'
-// import { Message } from 'element-ui'
-// import NProgress from 'nprogress' // progress bar
-// import 'nprogress/nprogress.css' // progress bar style
-// import { getToken } from '@/utils/auth' // get token from cookie
-// import getPageTitle from '@/utils/get-page-title'
+// 路由的权限拦截。
+import router from '@/router'
+import store from '@/store'
+import NProgress from 'nprogress' // 引入进度条。
+import 'nprogress/nprogress.css' // 引入进度条样式。
 
-// NProgress.configure({ showSpinner: false }) // NProgress Configuration
+// 路由导航前置守卫。
+const whileList = ['/login', '/404']
+router.beforeEach(async(to, from, next) => {
+  NProgress.start() // 开启进度条。
+  // next() 是一个必须执行的钩子函数，不执行程序就会被卡住。
+  // next() 放行。
+  // next(false) 终止。
+  // next(地址) 跳到某个地址。
+  if (store.getters.token) {
+    if (to.path === '/login') {
+      next('/') // 跳到主页。
+    } else {
+      if (!store.getters.userId) {
+        await store.dispatch('user/getUserInfo')
+        next()
+      } else {
+        next()
+      }
+    }
+  } else {
+    if (whileList.indexOf(to.path) > -1) {
+      // 表示访问的页面路径在白名单里面。
+      next()
+    } else {
+      next('/login')
+    }
+  }
+  NProgress.done() // 解决手动输入地址时，进度条不关闭的问题。
+})
 
-// const whiteList = ['/login'] // no redirect whitelist
-
-// router.beforeEach(async(to, from, next) => {
-//   // start progress bar
-//   NProgress.start()
-
-//   // set page title
-//   document.title = getPageTitle(to.meta.title)
-
-//   // determine whether the user has logged in
-//   const hasToken = getToken()
-
-//   if (hasToken) {
-//     if (to.path === '/login') {
-//       // if is logged in, redirect to the home page
-//       next({ path: '/' })
-//       NProgress.done()
-//     } else {
-//       const hasGetUserInfo = store.getters.name
-//       if (hasGetUserInfo) {
-//         next()
-//       } else {
-//         try {
-//           // get user info
-//           await store.dispatch('user/getInfo')
-
-//           next()
-//         } catch (error) {
-//           // remove token and go to login page to re-login
-//           await store.dispatch('user/resetToken')
-//           Message.error(error || 'Has Error')
-//           next(`/login?redirect=${to.path}`)
-//           NProgress.done()
-//         }
-//       }
-//     }
-//   } else {
-//     /* has no token*/
-
-//     if (whiteList.indexOf(to.path) !== -1) {
-//       // in the free login whitelist, go directly
-//       next()
-//     } else {
-//       // other pages that do not have permission to access are redirected to the login page.
-//       next(`/login?redirect=${to.path}`)
-//       NProgress.done()
-//     }
-//   }
-// })
-
-// router.afterEach(() => {
-//   // finish progress bar
-//   NProgress.done()
-// })
+// 路由导航后置守卫。
+router.afterEach(() => {
+  NProgress.done() // 关闭进度条。
+})
