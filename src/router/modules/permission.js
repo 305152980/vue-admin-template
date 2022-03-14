@@ -4,8 +4,8 @@ import Layout from '@/layout'
 // 权限管理模块的路由规则。
 export default {
   path: '/permission',
-  name: 'Permission',
   component: Layout,
+  redirect: '/permission',
   children: [{
     path: '',
     name: 'Permission',

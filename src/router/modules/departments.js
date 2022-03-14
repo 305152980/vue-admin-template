@@ -4,8 +4,8 @@ import Layout from '@/layout'
 // 组织架构模块的路由规则。
 export default {
   path: '/departments',
-  name: 'Departments',
   component: Layout,
+  redirect: '/departments',
   children: [{
     path: '',
     name: 'Departments',

@@ -4,8 +4,8 @@ import Layout from '@/layout'
 // 考勤模块的路由规则。
 export default {
   path: '/attendances',
-  name: 'Attendances',
   component: Layout,
+  redirect: '/attendances',
   children: [{
     path: '',
     name: 'Attendances',

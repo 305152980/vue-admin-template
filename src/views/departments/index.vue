@@ -1,7 +1,7 @@
 <template>
   <div class="departments-container">
     <div class="app-container">
-      组织结构
+      组织架构
     </div>
   </div>
 </template>

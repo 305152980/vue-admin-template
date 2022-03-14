@@ -3,11 +3,11 @@ import Layout from '@/layout'
 // 员工模块的路由规则。
 export default {
   path: '/employees',
-  name: 'Employees', // 给每一个路由规则加上 name 属性，方便后面进行的权限设置。
   component: Layout,
+  redirect: '/employees',
   children: [{
     path: '', //  子级路由地址如果为空，意味着此组件是父级路由的默认路由组件。
-    name: 'Employees',
+    name: 'Employees', // 给路由规则加上 name 属性，方便后面进行的权限设置。
     component: () => import('@/views/employees'),
     meta: {
       // 路由元信息，里面可以存储一些路由信息。

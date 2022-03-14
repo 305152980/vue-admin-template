@@ -3,8 +3,8 @@ import Layout from '@/layout'
 // 公司设置模块的路由规则。
 export default {
   path: '/setting',
-  name: 'Setting',
   component: Layout,
+  redirect: '/setting',
   children: [{
     path: '',
     name: 'Setting',

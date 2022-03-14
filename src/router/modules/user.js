@@ -6,7 +6,6 @@ export default {
   path: '/user',
   component: Layout,
   hidden: true,
-  name: 'User',
   children: [
     {
       path: '/user/info',
