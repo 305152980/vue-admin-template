@@ -1,5 +1,6 @@
 import { getToken, setToken, removeToken, setTimeStamp } from '@/utils/auth'
 import { login, getUserInfo, getUserDetailById } from '@/api/user'
+import { resetRouter } from '@/router'
 
 const state = {
   // token 初始化。
@@ -47,6 +48,10 @@ const actions = {
   logout({ commit }) {
     commit('removeToken')
     commit('removeUserInfo')
+    // 重置路由。
+    resetRouter()
+    // 重置左侧菜单。
+    commit('permission/setRoutes', [], { root: true })
   }
 }
 

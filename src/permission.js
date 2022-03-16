@@ -17,8 +17,13 @@ router.beforeEach(async(to, from, next) => {
       next('/') // 跳到主页。
     } else {
       if (!store.getters.userId) {
-        await store.dispatch('user/getUserInfo')
-        next()
+        const { roles } = await store.dispatch('user/getUserInfo')
+        // 获取用户路由的权限。
+        const routes = await store.dispatch('permission/filterRoutes', roles.menus)
+        // 在路由上设置用户路由的权限。
+        router.addRoutes([...routes, { path: '*', redirect: '/404', hidden: true }])
+        // 执行完 router.addRoutes() 后， 必须执行 next(to.path)，不能执行 next()。
+        next(to.path)
       } else {
         next()
       }

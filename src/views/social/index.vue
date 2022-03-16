@@ -1,6 +1,6 @@
 <template>
-  <div class="social-container">
-    <div class="app-container">
+  <div class="app-container">
+    <div class="social-container">
       社保
     </div>
   </div>
@@ -17,5 +17,9 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
+.social-container {
+  padding: 25px;
+  background-color: #fff;
+}
 </style>
 

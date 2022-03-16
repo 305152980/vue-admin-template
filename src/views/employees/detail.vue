@@ -1,7 +1,8 @@
 <template>
   <div class="app-container">
-    <div class="attendances-container">
-      考勤
+    <div class="employeesDetail-container">
+      <!-- 功能待开发 -->
+      员工详情页
     </div>
   </div>
 </template>
@@ -17,7 +18,7 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-.attendances-container {
+.employeesDetail-container {
   padding: 25px;
   background-color: #fff;
 }

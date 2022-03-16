@@ -3,7 +3,7 @@
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
 
       <div class="title-container">
-        <h3 class="title">HR-SaaS 管理平台</h3>
+        <h3 class="title">HR 管理平台</h3>
       </div>
 
       <el-form-item prop="mobile">
@@ -27,7 +27,7 @@
       <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">登录</el-button>
 
       <div class="tips">
-        <span style="margin-right:20px;">账号: 13800000001</span>
+        <span style="margin-right:20px;">账号: 13800000002</span>
         <span> 密码: 123456</span>
       </div>
 
@@ -50,7 +50,7 @@ export default {
     }
     return {
       loginForm: {
-        mobile: '13800000001',
+        mobile: '13800000002',
         password: '123456'
       },
       loginRules: {

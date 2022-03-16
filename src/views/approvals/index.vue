@@ -1,6 +1,6 @@
 <template>
-  <div class="approvals-container">
-    <div class="app-container">
+  <div class="app-container">
+    <div class="approvals-container">
       审批
     </div>
   </div>
@@ -17,5 +17,9 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
+.approvals-container {
+  padding: 25px;
+  background-color: #fff;
+}
 </style>
 

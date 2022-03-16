@@ -62,5 +62,9 @@ div:focus {
 
 // main-container global css
 .app-container {
+  position: relative;
+  height: calc(100vh - 50px);
   padding: 20px;
+  background-color: #f0f2f5;
+  overflow: auto;
 }

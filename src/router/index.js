@@ -10,7 +10,7 @@ import Layout from '@/layout'
 import approvalsRouter from './modules/approvals'
 import departmentsRouter from './modules/departments'
 import employeesRouter from './modules/employees'
-import permissionRouter from './modules/permission'
+// import permissionRouter from './modules/permission'
 import attendancesRouter from './modules/attendances'
 import salarysRouter from './modules/salarys'
 import settingRouter from './modules/setting'
@@ -49,12 +49,6 @@ export const constantRoutes = [
   },
 
   {
-    path: '/404',
-    component: () => import('@/views/404'),
-    hidden: true
-  },
-
-  {
     path: '/',
     component: Layout,
     redirect: '/dashboard',
@@ -66,27 +60,48 @@ export const constantRoutes = [
     }]
   },
 
+  {
+    path: '/import',
+    component: Layout,
+    redirect: '/import',
+    hidden: true,
+    children: [{
+      path: '',
+      component: () => import('@/views/import'),
+      meta: {
+        title: '导入'
+      }
+    }]
+  },
+
+  userRouter,
+
+  {
+    path: '/404',
+    component: () => import('@/views/404'),
+    hidden: true
+  }
+
   // 404 page must be placed at the end !!!
-  { path: '*', redirect: '/404', hidden: true }
+  // { path: '*', redirect: '/404', hidden: true }
 ]
 
 export const asyncRoutes = [
-  approvalsRouter,
-  departmentsRouter,
   employeesRouter,
-  permissionRouter,
-  attendancesRouter,
+  approvalsRouter, // 审批
+  attendancesRouter, // 考勤
   salarysRouter,
-  settingRouter,
   socialRouter,
-  userRouter
+  departmentsRouter,
+  settingRouter
+  // permissionRouter
 ]
 
 const createRouter = () => new Router({
   mode: 'history', // require service support
-  base: 'hr-saas/',
+  base: 'hr/',
   scrollBehavior: () => ({ y: 0 }),
-  routes: [...constantRoutes, ...asyncRoutes]
+  routes: [...constantRoutes]
 })
 
 // 实例化 Router 对象。

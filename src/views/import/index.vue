@@ -1,7 +1,9 @@
 <template>
   <div class="app-container">
-    <div class="attendances-container">
-      考勤
+    <div class="import-container">
+      <!-- 功能待开发 -->
+      <!-- 员工的公共导入组件 -->
+      员工的公共导入组件
     </div>
   </div>
 </template>
@@ -11,13 +13,12 @@ export default {
   data() {
     return {}
   },
-  created() {},
   methods: {}
 }
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-.attendances-container {
+.import-container {
   padding: 25px;
   background-color: #fff;
 }

@@ -1,6 +1,6 @@
 <template>
-  <div class="dashboard-container">
-    <div class="app-container">
+  <div class="app-container">
+    <div class="dashboard-container">
       首页
     </div>
   </div>
@@ -17,4 +17,8 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
+.dashboard-container {
+  padding: 25px;
+  background-color: #fff;
+}
 </style>
