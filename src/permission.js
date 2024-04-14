@@ -36,7 +36,6 @@ router.beforeEach(async(to, from, next) => {
       next('/login')
     }
   }
-  NProgress.done() // 解决手动输入地址时，进度条不关闭的问题。
 })
 
 // 路由导航后置守卫。
